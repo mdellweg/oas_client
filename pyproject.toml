@@ -1,25 +1,45 @@
+[build-system]
+requires = ["maturin>=1.0,<2.0"]
+build-backend = "maturin"
+
 [project]
-name = "py-rust"
+name = "py-oas"
 version = "0.1.0"
-description = "Add your description here"
+description = "OpenAPI extension for python"
 readme = "README.md"
 authors = [
     { name = "Matthias Dellweg", email = "2500@gmx.de" }
 ]
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+]
 
-[project.scripts]
-py-rust = "py_rust:main"
+[dependency-groups]
+dev = [
+    "aiohttp>=3.13.5",
+    "pytest>=9.0.3",
+    "pytest-asyncio>=1.3.0",
+    "pytest-httpserver>=1.1.5",
+    "ruff>=0.15.10",
+    "ty>=0.0.31",
+]
 
 [tool.maturin]
-module-name = "py_rust._core"
-python-packages = ["py_rust"]
+module-name = "py_oas.core"
+python-packages = ["py_oas"]
 python-source = "src"
+manifest-path = "crates/py_oas/Cargo.toml"
 
 [tool.uv]
-cache-keys = [{ file = "pyproject.toml" }, { file = "src/**/*.rs" }, { file = "Cargo.toml" }, { file = "Cargo.lock" }]
+cache-keys = [
+    { file = "pyproject.toml" },
+    { file = "crates/*/src/**/*.rs" },
+    { file = "crates/*/Cargo.toml" },
+    { file = "Cargo.toml" },
+    { file = "Cargo.lock" },
+]
 
-[build-system]
-requires = ["maturin>=1.0,<2.0"]
-build-backend = "maturin"
+[tool.pytest.ini_options]
+norecursedirs = ["tmp*"]
+asyncio_mode = "auto"
+asyncio_debug = true

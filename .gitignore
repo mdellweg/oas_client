@@ -6,6 +6,19 @@ dist/
 wheels/
 *.egg-info
 
+# Ruby-generated files
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+*.bundle
+mkmf.log
+.rake_tasks*
+
 # Virtual environments
 .venv
 

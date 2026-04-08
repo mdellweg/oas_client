@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.1",
+  "info": {"title": "Test API", "version": "0.0.0"},
+  "paths": {
+    "api/v1/hello/": {
+      "get": {"operationId": "hello"},
+      "delete": {"operationId": "goodbye", "responses": {"204": {"description": "When you know, you know."}}},
+      "post": {
+        "operationId": "greet",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema":{
+                "type": "object",
+                "required": ["name"],
+                "properties": {"name": {"type": "string"}}
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {"201": {"description": "Say hi, fellow stranger!"}}
+      }
+    },
+    "api/v1/user/{id}/": {
+      "get": {
+        "operationId": "show_user",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {"type": "integer"}
+          }
+        ],
+        "responses": {"200": {"description": "The whole user record."}}
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {"name": {"type": "string"}}
+      }
+    }
+  }
+}
