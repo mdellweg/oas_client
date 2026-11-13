@@ -10,8 +10,7 @@ Gem::Specification.new do |spec|
   spec.summary = 'A prototype that can read api.json and generate requests from it.'
   spec.description = 'A prototype that can read api.json and generate requests from it. A Ruby extension written in Rust.'
   spec.homepage = "https://github.com/ianballou/oas_client"
-  spec.required_ruby_version = '>= 3.1.0'
-  spec.required_rubygems_version = '>= 3.3.11'
+  spec.required_ruby_version = '>= 3.0'
 
   spec.metadata['allowed_push_host'] = "https://rubygems.org"
 
